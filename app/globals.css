@@ -1,0 +1,291 @@
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow: hidden;
+  max-height: 100vh;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 30px;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+/* app-container */
+
+.app-container {
+  width: 100%;
+  height: 90vh;
+  background: #1e1f24;
+  border-radius: 20px;
+}
+
+.weather-app {
+  padding: 20px;
+  display: flex;
+  justify-content: start;
+  gap: 20px;
+  flex-wrap: nowrap;
+  overflow: hidden;
+}
+
+.nav {
+  height: 85vh;
+  width: 75px;
+  background-color: #2e2e38;
+  text-align: center;
+  padding: 50px 15px;
+
+  /* left: 20px; */
+  border-radius: 20px;
+}
+
+.nav ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 30px;
+ list-style: none;
+}
+
+.nav ul li svg {
+  color: #FFF;
+  height: 20px;
+  opacity: 85%;
+}
+
+.contents {
+  height: 93vh;
+  width: 93%;
+  
+  border-radius: 20px;
+}
+
+/* dashboard */
+.dashboard {
+  
+
+  
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header .current-date {
+  color: #FFF;
+  font-size: 20px;
+  align-content: center;
+  display: flex;
+  gap: 20px;
+}
+
+.header .header-tools {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 20px;
+  align-content: center;
+}
+
+.header .header-tools input {
+  width: 250px;
+  height: 40px;
+  border-radius: 20px;
+  padding: 10px;
+  background-color: #2e2e38;
+  color: #FFF;
+  border: #33333a;
+}
+
+.header .header-tools select {
+  height: 40px;
+  width: 100px;
+  background-color: #2e2e38;
+  color: #FFF;
+  padding: 5px;
+  padding-left: 20px;
+  border-radius: 20px;
+  border: #33333a;
+  text-align: left;
+}
+
+/* info 1 */
+.info1 {
+  height: 270px;
+  margin: 20px 5px;
+  display: flex;
+  justify-content: start;
+  gap: 15px;
+}
+
+.overview {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: #33333a;
+}
+
+.overview-container {
+  height: 100%;
+  width: 60%;
+  background-color: #2e2e38;
+  border-radius: 20px;
+  padding: 10px;
+  overflow: hidden;
+  flex-grow: 1;
+}
+
+.overview ul {
+  display: flex;
+  color: #FFF;
+  list-style: none;
+  gap: 45px;
+  min-height: 100px;
+}
+.overview ul li {
+  align-content: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-grow: 1;
+}
+
+.overview ul img {
+  height: 100px;
+  width: 150px;
+}
+.overview ul h3 {
+  font-size: 13px;
+  font-weight: 100;
+}
+.overview ul h1 {
+  font-size: 26px;
+  font-weight: 300;
+
+}
+
+.weather-cards .card1, .weather-cards .card2, .weather-cards .card3, .weather-cards .card4, .weather-cards .card5,
+.weather-cards .card6, .weather-cards .card7, .weather-cards .card8,
+.weather-cards .card9, .weather-cards .card10, .weather-cards .card11 {
+  height: 135px;
+  width: 60px;
+  background: #c6e6e8;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 10px;
+  font-size: 13px;
+  gap: 12px;
+  flex-grow: 1;
+}
+
+.weather-cards {
+  display: flex;
+  justify-content: start;
+  gap: 6px;
+}
+
+.current-loc {
+  height: 100%;
+  width: 40%;
+  background-color: #2e2e38;
+  border-radius: 20px;
+  padding: 10px;
+  border: #33333a;
+}
+
+.info2 {
+  height: 270px;
+  margin: 20px 5px;
+  display: flex;
+  justify-content: start;
+  gap: 15px;
+}
+
+.forecast {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: #33333a;
+}
+.forecast .title {
+  font-size: 16px;
+  color: #FFF;
+  margin: 10px;
+}
+
+.forecast-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.forecast-content .content1 {
+  min-width: 90%;
+  height: 50px;
+  background: #1e1f24;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 35px;
+  color: #FFF;
+}
+
+.forecast .title {
+  font-size: 25px;
+  color: #FFF;
+  margin: 10px;
+}
+
+.left-side {
+  display: flex;
+  color: #FFF;
+  justify-content: start;
+  gap: 20px;
+}
+
+.left-side span {
+  align-content: center;
+}
+
+.credits {
+  color: black;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #dcedf4;
+  border-radius: 20px;
+  padding: 20px;
+  width: 30%;
+  justify-content: center;
+
+}
+
+.credits h1{
+  font-weight: 200;
+}
+
+.credits p {
+  font-weight: 100;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 2px;
+}
