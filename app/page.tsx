@@ -7,7 +7,7 @@ import WeatherHourlyCards from './components/WeatherHourlyCards'
 
 export default function Home() {
 
-  // let sample =[ {
+  // const sample =[ {
   //   base: "stations",
   //   clouds: {
   //     all: 100
@@ -162,35 +162,35 @@ export default function Home() {
 //   "dt_txt": "2024-09-15 09:00:00"
 // },
 
-  let [searchLocation, setsearchLocation] = useState('');
-  let [name, setName] = useState('');
-  let [temperature, setTemperature] = useState('');
-  let [humidity, setHumidity] = useState('');
-  let [wind, setWind] = useState('');
-  let [icon, setIcon] = useState('');
-  let [lat, setLat] = useState('');
-  let [lon, setLon] = useState('');
+  const [searchLocation, setsearchLocation] = useState('');
+  const [name, setName] = useState('');
+  const [temperature, setTemperature] = useState('');
+  const [humidity, setHumidity] = useState('');
+  const [wind, setWind] = useState('');
+  const [icon, setIcon] = useState('');
+  const [lat, setLat] = useState('');
+  const [lon, setLon] = useState('');
   const [hours , setHours] = useState<string[]>([])
-  let [hour_icon , setHourIcon] = useState<String[]>([])
-  let [hour_temp , setHourTemp] = useState<any[]>([])
+  const [hour_icon , setHourIcon] = useState<String[]>([])
+  const [hour_temp , setHourTemp] = useState<any[]>([])
   const [currentDate, setCurrentDate] = useState('')
 
   const [f_date , setf_date] = useState<String[]>([])
-  let [f_icon , setf_icon] = useState<String[]>([])
-  let [f_temp , setf_temp] = useState<any[]>([])
+  const [f_icon , setf_icon] = useState<String[]>([])
+  const [f_temp , setf_temp] = useState<any[]>([])
 
-  let newhours : String[] =[]
-  let newhour_icon : String[] = []
-  let newhour_temp : String[] = []
+  const newhours : String[] =[]
+  const newhour_icon : String[] = []
+  const newhour_temp : String[] = []
 
-  let forecast_date : String[] =[]
-  let forecast_icon : String[] = []
-  let forecast_temp : String[] = []
+  const forecast_date : String[] =[]
+  const forecast_icon : String[] = []
+  const forecast_temp : String[] = []
   const [isLoading, setIsLoading] = useState(false);
   const maps_url = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d100000!2d${lon}!3d${lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d43f1b11f41%3A0xb1bbdccae5695b5!2sFederation%20Square!5e0!3m2!1sen!2sau!4v1600332231819!5m2!1sen!2sau`
 
 
-  // let api = `https://api.openweathermap.org/data/2.5/weather?q=${searchLocation}&AP			PID=3600339562a40594772c7e7eebfa002a`;
+  // const api = `https://api.openweathermap.org/data/2.5/weather?q=${searchLocation}&AP			PID=3600339562a40594772c7e7eebfa002a`;
   const hourly_api = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=3600339562a40594772c7e7eebfa002a`;
 
   const handleSearch = (e: React.FormEvent) => {
@@ -263,7 +263,7 @@ export default function Home() {
     const hourly_data : any = await hourly_response.json();
 
     if(hourly_data && hourly_data.list && hourly_data.list.length > 0){
-      for(let i =0; i <11 ; i++){
+      for(const i =0; i <11 ; i++){
         const items = (hourly_data.list[i]);
         console.log(items.weather[0].icon);
         const final_date = convertTimestampToTime(items.dt)
@@ -299,7 +299,7 @@ export default function Home() {
     const call_data = await call_response.json();
 
     
-    for(let i=0 ; i < 3 ; i++){
+    for(const i=0 ; i < 3 ; i++){
       if(call_data[i]){
         forecast_date.push(call_data[i].date)
       forecast_icon.push(call_data[i].icon)
