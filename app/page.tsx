@@ -1,7 +1,5 @@
 'use client'
 
-import Image from "next/image";
-import styles from "./page.module.css";
 import { useEffect, useState } from "react";
 import WeatherHourlyCards from './components/WeatherHourlyCards'
 
@@ -172,7 +170,7 @@ export default function Home() {
   let [icon, setIcon] = useState('');
   let [lat, setLat] = useState('');
   let [lon, setLon] = useState('');
-  const [hours , setHours] = useState<String[]>([])
+  const [hours , setHours] = useState<string[]>([])
   let [hour_icon , setHourIcon] = useState<String[]>([])
   let [hour_temp , setHourTemp] = useState<any[]>([])
   const [currentDate, setCurrentDate] = useState('')
