@@ -249,7 +249,7 @@ export default function Home() {
     setLon(data.coord.lon);
    }
    
-  
+   
   };
 
   interface HourlyData {
@@ -465,7 +465,8 @@ export default function Home() {
       </div>
       <div className="credits">
         <h1>SUBSCRIBE!</h1>
-        <p>Stay ahead of the weather with our daily <br/> forecasts and updates! Get ready to embrace <br/> the elements and make the most of your day.</p>
+        <p>Stay ahead of the weather with our daily <br/> forecasts and updates! Get ready to embrace <br/> the elements and make the most of your day. <br/>
+        </p>
       </div>
     </div>
 
