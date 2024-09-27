@@ -7,7 +7,7 @@ import WeatherHourlyCards from './components/WeatherHourlyCards'
 
 export default function Home() {
 
-  // const sample =[ {
+  // let sample =[ {
   //   base: "stations",
   //   clouds: {
   //     all: 100
@@ -171,26 +171,26 @@ export default function Home() {
   const [lat, setLat] = useState('');
   const [lon, setLon] = useState('');
   const [hours , setHours] = useState<string[]>([])
-  const [hour_icon , setHourIcon] = useState<String[]>([])
-  const [hour_temp , setHourTemp] = useState<any[]>([])
+  const [hour_icon , setHourIcon] = useState<string[]>([])
+  const [hour_temp , setHourTemp] = useState<number[]>([])
   const [currentDate, setCurrentDate] = useState('')
 
-  const [f_date , setf_date] = useState<String[]>([])
-  const [f_icon , setf_icon] = useState<String[]>([])
-  const [f_temp , setf_temp] = useState<any[]>([])
+  const [f_date , setf_date] = useState<string[]>([])
+  const [f_icon , setf_icon] = useState<string[]>([])
+  const [f_temp , setf_temp] = useState<string[]>([])
 
-  const newhours : String[] =[]
-  const newhour_icon : String[] = []
-  const newhour_temp : String[] = []
+  let newhours : string[] =[]
+  let newhour_icon : string[] = []
+  let newhour_temp : number[] = []
 
-  const forecast_date : String[] =[]
-  const forecast_icon : String[] = []
-  const forecast_temp : String[] = []
+  const forecast_date : string[] =[]
+  const forecast_icon : string[] = []
+  const forecast_temp : string[] = []
   const [isLoading, setIsLoading] = useState(false);
   const maps_url = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d100000!2d${lon}!3d${lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d43f1b11f41%3A0xb1bbdccae5695b5!2sFederation%20Square!5e0!3m2!1sen!2sau!4v1600332231819!5m2!1sen!2sau`
 
 
-  // const api = `https://api.openweathermap.org/data/2.5/weather?q=${searchLocation}&AP			PID=3600339562a40594772c7e7eebfa002a`;
+  // let api = `https://api.openweathermap.org/data/2.5/weather?q=${searchLocation}&AP			PID=3600339562a40594772c7e7eebfa002a`;
   const hourly_api = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=3600339562a40594772c7e7eebfa002a`;
 
   const handleSearch = (e: React.FormEvent) => {
@@ -210,12 +210,15 @@ export default function Home() {
       
   };
 
-  function formatDate(inputDate: String) {
+  function formatDate(inputDate: string) {
     // Replace dashes with slashes for the Date object
     const date = new Date(inputDate.replace(/-/g, '/'));
 
-    // Define options for formatting
-    const options = { day: 'numeric', month: 'long', weekday: 'short' };
+    const options: Intl.DateTimeFormatOptions = { 
+      day: 'numeric',  // Correct: 'numeric' | '2-digit'
+      month: 'long',   // Correct: 'numeric' | '2-digit' | 'narrow' | 'short' | 'long'
+      weekday: 'short' // Correct: 'long' | 'short' | 'narrow'
+    };
     
     // Format the date
     return date.toLocaleDateString('en-US', options).replace(',', '');
@@ -250,27 +253,27 @@ export default function Home() {
    
   };
 
-  interface HourlyData {
+  // interface HourlyData {
     
-    time: string;
-    temperature: number;
-    humidity: number;
-  }
+  //   time: string;
+  //   temperature: number;
+  //   humidity: number;
+  // }
  
 
   const getHourly = async() => {
     const hourly_response = await fetch(`${hourly_api}`);
-    const hourly_data : any = await hourly_response.json();
+    const hourly_data = await hourly_response.json();
 
     if(hourly_data && hourly_data.list && hourly_data.list.length > 0){
-      for(const i =0; i <11 ; i++){
+      for(let i =0; i <11 ; i++){
         const items = (hourly_data.list[i]);
         console.log(items.weather[0].icon);
         const final_date = convertTimestampToTime(items.dt)
        
         newhours.push(final_date)
         newhour_icon.push(items.weather[0].icon)
-        newhour_temp.push((parseFloat(items.main.temp) - 273.15).toFixed(2))
+        newhour_temp.push(parseFloat((parseFloat(items.main.temp) - 273.15).toFixed(2)))
 
       }
       setHours(newhours);
@@ -283,7 +286,7 @@ export default function Home() {
         newhour_temp = []
     }
   };
-  const convertTimestampToTime = (timestamp:any) => {
+  const convertTimestampToTime = (timestamp:number) => {
     // Convert timestamp from seconds to milliseconds
     const date = new Date(timestamp * 1000);
     
@@ -299,7 +302,7 @@ export default function Home() {
     const call_data = await call_response.json();
 
     
-    for(const i=0 ; i < 3 ; i++){
+    for(let i=0 ; i < 3 ; i++){
       if(call_data[i]){
         forecast_date.push(call_data[i].date)
       forecast_icon.push(call_data[i].icon)
@@ -364,7 +367,7 @@ export default function Home() {
         </select>
       </div>
     </div>
-
+    <div className="info_container">
     <div className="info1">
       <div className="overview-container">
         <div className="overview">
@@ -467,6 +470,10 @@ export default function Home() {
         </p>
       </div>
     </div>
+
+    </div>
+
+
 
 
   </div>
