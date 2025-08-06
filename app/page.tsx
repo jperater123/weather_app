@@ -191,7 +191,7 @@ export default function Home() {
 
 
   // let api = `https://api.openweathermap.org/data/2.5/weather?q=${searchLocation}&AP			PID=3600339562a40594772c7e7eebfa002a`;
-  const hourly_api = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=3600339562a40594772c7e7eebfa002a`;
+  const hourly_api = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=3600339562a40594772c7e7eebfa002a`;
 
   const handleSearch = (e: React.FormEvent) => {
       
